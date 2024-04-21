@@ -4,6 +4,7 @@ import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { Loading } from './components/loading';
+import { ConfigProvider } from 'antd';
 function App() {
   const [router, setRouter] = useState(
     null as unknown as ReturnType<typeof createBrowserRouter>,
@@ -14,9 +15,10 @@ function App() {
     });
   }, [setRouter]);
 
-
   return (
-    router? <RouterProvider router={router}/>: <Loading />
+    <ConfigProvider>
+      {router ? <RouterProvider router={router} /> : <Loading />}
+    </ConfigProvider>
   );
 }
 

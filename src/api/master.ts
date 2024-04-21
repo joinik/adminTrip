@@ -1,4 +1,5 @@
 import { request } from '@/utils/axios';
+import {User} from '@/model/User'
 
 /**
  * 登录返回sign
@@ -10,6 +11,8 @@ export const loginGet = (data: { user: string; pwd: string }) => {
   return request<{ sign: string }>({ url });
 };
 
-const userDateGet = () => {
+export const userDateGet = (data: {name?: string; password?: string} ={}) => {
   const url = '/admin/user';
+  if (data) return request<{info: string}>({url, method: 'POST', data})
+  return request<{info: User[]}>({url})
 };

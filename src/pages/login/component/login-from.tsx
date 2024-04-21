@@ -1,13 +1,13 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { SubmitBtn } from './submit-btn';
 
-export type LoginEvent = (post: { user: string; password: string }) => void;
+export type LoginEvent = (post: { user: string; pwd: string }) => void;
 export const LoginForm = ({ onSubmit }: { onSubmit: LoginEvent }) => {
   const [user, setUser] = useState('');
-  const [password, setPassword] = useState('');
-  const submit = (event: FormEvnet) => {
+  const [pwd, setPassword] = useState('');
+  const submit = (event: FormEvent) => {
     event.preventDefault();
-    onSubmit({ user, password });
+    onSubmit({ user, pwd });
   };
 
   return (

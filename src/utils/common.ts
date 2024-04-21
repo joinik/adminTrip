@@ -20,8 +20,8 @@ type MenuItem = Required<MenuProps>['items'][number];
 export const touchItem = (
   label: React.ReactNode,
   key: string,
-  icon?: React.ReactNode,
   children: MenuItem[],
+  icon?: React.ReactNode,
   type?: 'group',
 ) => ({ label, key, icon, children, type });
 

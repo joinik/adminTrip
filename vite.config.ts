@@ -8,7 +8,10 @@ export default defineConfig({
   resolve:{
     alias:{
       '@root': path.join(__dirname, './'),
-      '@web': path.join(__dirname, './src')
+      '@': path.join(__dirname, './src')
     }
   },
+  build:{
+    chunkSizeWarningLimit: 1024,
+  }
 })

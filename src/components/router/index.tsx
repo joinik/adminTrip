@@ -1,7 +1,7 @@
 import { RequireAuth } from '@/pages/auth';
 import { createBrowserRouter } from 'react-router-dom';
 import { IframeLayout } from '../layout';
-import { routeChildren, LoginElement, NotFoundElement } from './withItems';
+import { LoginElement, NotFoundElement, routeChildren } from './withItems';
 import { ErrorElement } from './errorElement';
 
 const appRouter = createBrowserRouter([
@@ -14,19 +14,19 @@ const appRouter = createBrowserRouter([
       </RequireAuth>
     ),
     children: routeChildren,
-    errorElement: <ErrorElement/>
+    errorElement: <ErrorElement />,
   },
   // 登录路由
   {
     path: '/login',
     element: LoginElement,
-    errorElement: <ErrorElement/>
+    errorElement: <ErrorElement />,
   },
   //404路由
   {
     path: ':miss',
     element: NotFoundElement,
-    errorElement: <ErrorElement/>
+    errorElement: <ErrorElement />,
   },
 ]);
 

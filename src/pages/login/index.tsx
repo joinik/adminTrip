@@ -1,14 +1,13 @@
-
 import './index.scss';
 import { upDocumentTitle } from '@/utils';
 import { message, notification } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { LoginEvent, LoginForm } from './component/login-from';
-import { loginPost } from '@/api';
+import { loginGet } from '@/api';
 import { useSign } from '@/store/auth';
 
 export const Login = () => {
-  upDocumentTitle('Authorized Login');
+  upDocumentTitle('Admin Login');
 
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
@@ -24,7 +23,7 @@ export const Login = () => {
     });
 
     try {
-      const { sign } = await loginPost(post);
+      const { sign } = await loginGet(post);
       setSign(sign);
       await message.success('Loading finished', 2.5);
       navigate('/');
