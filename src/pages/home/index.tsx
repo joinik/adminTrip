@@ -1,7 +1,7 @@
-// import { AnimaView } from '@web/components/animaRouter';
+import { AnimaView } from '@/components/animaRouter';
 import './index.scss';
 export const Home = () => (
-  // <AnimaView>
+  <AnimaView>
     <article className="home-view">
       <div className="container">
         <div className="lamb a a-3"></div>
@@ -172,7 +172,7 @@ export const Home = () => (
         </div>
       </div>
     </article>
-  // </AnimaView>
+  </AnimaView>
 );
 
 export default Home;

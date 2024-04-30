@@ -9,7 +9,7 @@ export const axiosInstance = axios.create({
 });
 
 // let token: string | null = window.localStorage.getItem('token');
-// let sign: string | null = window.localStorage.getItem('sign');
+// const sign: string | null = window.localStorage.getItem('sign');
 
 /**获取token */
 // export const getToken = async () => {
@@ -17,13 +17,13 @@ export const axiosInstance = axios.create({
 //   if (sign !== null) return sign;
 //   return getTokenByPerg();
 // };
-
 const getSign = async () => {
-  const rest = await request<{ sign: string }>({
-    url: '/admin/login',
-  });
-  window.localStorage.setItem('sign', rest.sign);
-  return rest.sign;
+  const sign: string | null = window.localStorage.getItem('sign');
+  if (!sign) {
+    window.location.href = 'http://localhost:5173/login';
+  }
+
+  return sign;
 };
 
 /**从后端获取token */
@@ -41,7 +41,8 @@ const getSign = async () => {
 /**发送请求前 */
 axiosInstance.interceptors.request.use(async config => {
   const { url } = config;
-  if (url === '/master/v1/token' || url === '/admin/login') return config;
+  const regex = /\/admin\/login.*/g;
+  if (url === '/master/v1/token' || regex.test(url as string)) return config;
   const sign = await getSign();
   const { headers } = config;
   headers.sign = sign;

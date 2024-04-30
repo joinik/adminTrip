@@ -1,5 +1,5 @@
 export const siteConfig = {
-  domain: `http:/localhost:5000`,
+  domain: `http://127.0.0.1:5000`,
   /** 静态资源地址 */
 
   /** 默认分页 */

@@ -1,5 +1,6 @@
-import { HomeOutlined } from '@ant-design/icons';
+/* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react';
+import { HomeOutlined } from '@ant-design/icons';
 
 const Home = lazy(() => import('@/pages/home'));
 export const HomeRouter: RouteItem = {

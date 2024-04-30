@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { Suspense } from 'react';
-import './index.scss'
+import './index.scss';
 export const Loading = () => {
   return (
     <div className="loader">
@@ -19,5 +19,5 @@ export const Loading = () => {
 };
 
 export default ({ children }: { children: React.ReactNode }) => {
-  return <Suspense fallback={<Loading />}>{chidlren}</Suspense>;
+  return <Suspense fallback={<Loading />}>{children}</Suspense>;
 };

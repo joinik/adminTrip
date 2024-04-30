@@ -1,5 +1,4 @@
 import { request } from '@/utils/axios';
-import {User} from '@/model/User'
 
 /**
  * 登录返回sign
@@ -8,11 +7,34 @@ import {User} from '@/model/User'
  */
 export const loginGet = (data: { user: string; pwd: string }) => {
   const url = `/admin/login/${data.user}/${data.pwd}`;
-  return request<{ sign: string }>({ url });
+  console.log(url, 'loginGet');
+
+  return request<{ info: string }>({ url });
 };
 
-export const userDateGet = (data: {name?: string; password?: string} ={}) => {
+/**
+ * 获取用户数据
+ * @param start 页码
+ * @param data 用户数据
+ * @returns User[], info
+ */
+export const userDateGet = (
+  start: number = 1,
+  data: { name?: string; password?: string } = {},
+) => {
+  const url = start ? `/admin/user?start=${start}` : '/admin/user';
+  if (data === null)
+    return request<{ info: string }>({ url, method: 'POST', data });
+  return request<{ info: User[]; total: number }>({ url });
+};
+
+/**
+ * 修改用户数据
+ * @param data 用户数据
+ * @returns 
+ */
+export const userEdit = (data: Partial<User>) => {
   const url = '/admin/user';
-  if (data) return request<{info: string}>({url, method: 'POST', data})
-  return request<{info: User[]}>({url})
+  const method = 'PATCH';
+  return request<unknown>({ url, method, data: { ...data } });
 };

@@ -23,8 +23,9 @@ export const Login = () => {
     });
 
     try {
-      const { sign } = await loginGet(post);
-      setSign(sign);
+      const { info } = await loginGet(post);
+      const user = info.replace('用户登录成功！', '')
+      setSign(user);
       await message.success('Loading finished', 2.5);
       navigate('/');
     } catch (err: unknown) {

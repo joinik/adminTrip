@@ -1,6 +1,4 @@
-import 'antd/dist/reset.css';
 import { useEffect, useState } from 'react';
-import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { Loading } from './components/loading';
@@ -14,7 +12,6 @@ function App() {
       setRouter(res.default);
     });
   }, [setRouter]);
-
   return (
     <ConfigProvider>
       {router ? <RouterProvider router={router} /> : <Loading />}

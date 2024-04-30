@@ -22,12 +22,7 @@ export const NotFoundElement = (
 
 /**一级路由 */
 const flatRoutes: RouteItem[] = [];
-/**
- * 多级路由 平铺为一维路由
- * @param routes 
- * @param container 
- * @param prefixPath 
- */
+/**多级路由 平铺为一维路由 */
 const pushInFlatRoutes = (
   routes: RouteItem[],
   container: RouteItem[],
@@ -45,10 +40,9 @@ const pushInFlatRoutes = (
 };
 pushInFlatRoutes(routes, flatRoutes);
 
-
 /**异步的动态路由列表 */
 export const routeChildren = flatRoutes.map(item => ({
-  // key: item.path,
+  key: item.path,
   path: item.path,
   lazy: item.lazy,
   label: item.label,
@@ -59,4 +53,3 @@ export const routeChildren = flatRoutes.map(item => ({
   errorElement: item.errorElement ?? <ErrorElement />,
   element: <Loading>{item.element}</Loading>,
 }));
-

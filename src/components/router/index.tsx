@@ -1,6 +1,6 @@
-import { RequireAuth } from '@/pages/auth';
 import { createBrowserRouter } from 'react-router-dom';
-import { IframeLayout } from '../layout';
+import { IframeLayout } from '@/components/layout';
+import { RequireAuth } from '@/components/auth';
 import { LoginElement, NotFoundElement, routeChildren } from './withItems';
 import { ErrorElement } from './errorElement';
 
@@ -21,6 +21,7 @@ const appRouter = createBrowserRouter([
     path: '/login',
     element: LoginElement,
     errorElement: <ErrorElement />,
+    // children: routeChildren,
   },
   //404路由
   {

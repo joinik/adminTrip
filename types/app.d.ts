@@ -1,3 +1,9 @@
+type User = {
+  name: string;
+  password: string;
+  is_admin: number;
+};
+
 type RouteItem = {
   label: React.ReactNode;
   icon?: React.ReactNode;

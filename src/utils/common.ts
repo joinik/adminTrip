@@ -20,7 +20,7 @@ type MenuItem = Required<MenuProps>['items'][number];
 export const touchItem = (
   label: React.ReactNode,
   key: string,
-  children: MenuItem[],
+  children?: MenuItem[],
   icon?: React.ReactNode,
   type?: 'group',
 ) => ({ label, key, icon, children, type });
@@ -31,8 +31,8 @@ export const touchItem = (
 export const filterMenuItms = (
   list: RouteItem[],
   prefixPath = '',
-): Array<ReturnType<typeof touchItem>> =>
-  list
+): Array<ReturnType<typeof touchItem>> => {
+  return list
     .filter(item => item.hide !== true)
     .map(item => {
       const path = `${prefixPath}/${item.path.replace(/^\/+/, '')}`;
@@ -42,11 +42,12 @@ export const filterMenuItms = (
         : [];
       return touchItem(
         item.label,
-        item.path,
-        item.icon,
+        path,
         children.length ? children : undefined,
+        item.icon,
       );
     });
+};
 
 /**
  * 捕获异常
