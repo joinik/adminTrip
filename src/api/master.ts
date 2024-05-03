@@ -7,8 +7,6 @@ import { request } from '@/utils/axios';
  */
 export const loginGet = (data: { user: string; pwd: string }) => {
   const url = `/admin/login/${data.user}/${data.pwd}`;
-  console.log(url, 'loginGet');
-
   return request<{ info: string }>({ url });
 };
 

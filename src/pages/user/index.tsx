@@ -41,11 +41,10 @@ const App: React.FC = () => {
   };
 
   //使用记忆回调函数
-  const onTop = useCallback(
+  const onTop:top = useCallback(
     (action: 'edit' | 'reload', item: User) => {
       if (action === 'edit') {
         setEditVisible(true);
-        console.log('edit', item);
         setItem(item);
       }
     },
@@ -76,7 +75,7 @@ const App: React.FC = () => {
                   description="是否删除该用户"
                   onConfirm={async () => {
                     await noteRemove(row.id);
-                    tap('reload', row);
+                    onTop('reload', row);
                   }}
                   okText="确认"
                   cancelText="取消"
